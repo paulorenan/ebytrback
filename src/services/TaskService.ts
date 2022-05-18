@@ -8,12 +8,27 @@ class TaskService extends Service<Task> {
   }
 
   create = async (obj: Task): Promise<Task | null | ServiceError> => {
-    const parsed = TaskSchema.safeParse(obj);
+    const crObj = { ...obj, createdAt: new Date(), updatedAt: new Date() };
+    const parsed = TaskSchema.safeParse(crObj);
     if (!parsed.success) {
       return { error: parsed.error };
     }
-    return this.model.create(obj);
+    return this.model.create(crObj);
   };
+
+  read = async (): Promise<Task[]> => this.model.read();
+
+  readOne = async (id: string): Promise<Task | null | ServiceError> =>
+    this.model.readOne(id);
+
+  update = async (id: string, obj: Task): Promise<Task | null | ServiceError> => {
+    const upObj = { ...obj, updatedAt: new Date() };
+    const parsed = TaskSchema.safeParse(upObj);
+    if (!parsed.success) {
+      return { error: parsed.error };
+    }
+    return this.model.update(id, upObj);
+  }
 }
 
 export default TaskService;
