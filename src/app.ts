@@ -1,24 +1,25 @@
-import express from 'express';
-import connection from './models/connection';
+import express, { Router } from 'express';
+import connectToDatabase from './models/connection';
 
 class App {
-  public express: express.Application;
-
-  public connection: Promise<typeof import('mongoose')>;
+  private app: express.Application;
 
   constructor() {
-    this.express = express();
-    this.middlewares();
-    this.connection = connection();
-    this.routes();
+    this.app = express();
+    this.app.use(express.json());
   }
 
-  private middlewares(): void {
-    this.express.use(express.json());
+  public startServer(port = 3001) {
+    connectToDatabase();
+    const actualPort = process.env.PORT || port;
+    return this.app.listen(
+      actualPort,
+      () => console.log('Estamos online na porta: ', actualPort),
+    );
   }
 
-  private routes() {
-    // this.express.use(routes);
+  public addRouter(router: Router) {
+    this.app.use(router);
   }
 }
 

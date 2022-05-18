@@ -1,9 +1,15 @@
-import App from './src/app';
+import TaskController from "./src/controllers/TaskController";
+import Task from "./src/interfaces/Tasks";
+import CustomRouter from "./src/routes/Router";
+import App from "./src/app";
 
-const app = new App().express;
+const server = new App();
 
-const PORT = process.env.PORT || 3000;
+const taskController = new TaskController();
 
-app.listen(PORT, () => {
-  console.log(`Ouvindo a porta ${PORT}`);
-});
+const taskRouter = new CustomRouter<Task>();
+taskRouter.addRoute(taskController);
+
+server.addRouter(taskRouter.router);
+
+server.startServer();
