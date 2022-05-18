@@ -1,5 +1,5 @@
 import { Schema, model as createModel, Document } from 'mongoose';
-import Task from '../interfaces/Taks';
+import Task from '../interfaces/Tasks';
 import MongoModel from './MongoModel';
 
 interface TaskDocument extends Task, Document { }
