@@ -6,7 +6,7 @@ abstract class MongoModel<T> implements Model<T> {
 
   create = async (obj: T): Promise<T> => this.model.create({ ...obj });
 
-  read = async (): Promise<T[]> => this.model.find();
+  read = async (): Promise<T[]> => this.model.find().sort({ createdAt: -1 });
 
   readOne = async (id: string): Promise<T | null> =>
     this.model.findOne({ _id: id });
