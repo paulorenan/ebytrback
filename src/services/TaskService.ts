@@ -1,4 +1,4 @@
-import Task, { TaskSchema } from "../interfaces/Tasks";
+import Task, { TaskSchema, TaskUpdateSchema } from "../interfaces/Tasks";
 import Service, { ServiceError } from ".";
 import TaskModel from "../models/TaskModel";
 
@@ -23,12 +23,12 @@ class TaskService extends Service<Task> {
 
   update = async (id: string, obj: Task): Promise<Task | null | ServiceError> => {
     const upObj = { ...obj, updatedAt: new Date() };
-    const parsed = TaskSchema.safeParse(upObj);
+    const parsed = TaskUpdateSchema.safeParse(upObj);
     if (!parsed.success) {
       return { error: parsed.error };
     }
     return this.model.update(id, upObj);
-  }
+  };
 }
 
 export default TaskService;
