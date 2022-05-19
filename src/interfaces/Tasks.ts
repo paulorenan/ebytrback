@@ -14,8 +14,7 @@ const TaskSchema = z.object({
   status: z.string({
     required_error: 'Status is required',
     invalid_type_error: 'Status must be a string',
-  }).min(3,{ message: 'Status must be at least 3 characters' })
-    .max(255, { message: 'Status must be at most 255 characters' }),
+  }),
   createdAt: z.date({
     required_error: 'CreatedAt is required',
     invalid_type_error: 'CreatedAt must be a date',
@@ -40,8 +39,7 @@ const TaskUpdateSchema = z.object({
   status: z.string({
     required_error: 'Status is required',
     invalid_type_error: 'Status must be a string',
-  }).min(3,{ message: 'Status must be at least 3 characters' })
-    .max(255, { message: 'Status must be at most 255 characters' }),
+  }),
   updatedAt: z.date({
     required_error: 'UpdatedAt is required',
     invalid_type_error: 'UpdatedAt must be a date',

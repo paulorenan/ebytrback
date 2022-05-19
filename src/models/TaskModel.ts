@@ -20,8 +20,6 @@ const taskSchema = new Schema<TaskDocument>({
   status: {
     type: String,
     required: true,
-    minlength: 3,
-    maxlength: 255,
   },
   createdAt: {
     type: Date,
