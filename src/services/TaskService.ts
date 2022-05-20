@@ -3,7 +3,7 @@ import Service, { ServiceError } from ".";
 import TaskModel from "../models/TaskModel";
 
 class TaskService extends Service<Task> {
-  constructor(model = new TaskModel()) {
+  constructor(public model = new TaskModel()) {
     super(model);
   }
 

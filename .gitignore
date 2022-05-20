@@ -5,6 +5,7 @@ build/
 tmp/
 temp/
 dist/
+coverage/
 package-lock.json
 .git/
 .gitmodules
