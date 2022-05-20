@@ -47,7 +47,7 @@ export const allTasks = [
 ];
 
 export const oneTask = {
-  "_id": "6286b41e7af3e1f10fc9ed7b",
+  "_id": "62870ffa2e4c99c57ea14b7f",
   "title": "hmmm",
   "description": "n sei",
   "status": "0",
@@ -55,4 +55,3 @@ export const oneTask = {
   "updatedAt": new Date("2022-05-19T21:18:22.221Z"),
   "__v": 0
 };
-

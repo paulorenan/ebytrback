@@ -32,7 +32,7 @@ const taskSchema = new Schema<TaskDocument>({
 });
 
 class TaskModel extends MongoModel<Task> {
-  constructor(model = createModel('Task', taskSchema)) {
+  constructor(public model = createModel('Task', taskSchema)) {
     super(model);
   }
 }

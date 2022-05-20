@@ -12,4 +12,6 @@ taskRouter.addRoute(taskController);
 
 server.addRouter(taskRouter.router);
 
+export default server;
+
 server.startServer();
